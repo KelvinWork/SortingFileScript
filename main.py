@@ -1,6 +1,6 @@
 import os
 import shutil
-from folderCreation import *
+from GUI import *
 
 
 
