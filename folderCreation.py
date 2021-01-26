@@ -1,8 +1,8 @@
 import os
 
-date = "Mon"
+date = ["Mon", "Tues", "Wed", "Thurs", "Fri"]
 folderName = "Mosquitto"
-createFolderDestination ="/Users/kelvi/Desktop/"
+createFolderDestination ="/Users/butac/Desktop/"
 folderPath = createFolderDestination+folderName+"/"
 
 def creatingFolder():
@@ -18,8 +18,9 @@ def creatingSubFolder():
     print("World Hello")
     mosquittoClass = ["Aeg", "Alb", "Aesp", "Chiro", "Oi", "5fas"]
 
-    for x in mosquittoClass:
-        os.mkdir(folderPath+date+x)
+    for y in range(5):
+        for x in mosquittoClass:
+            os.mkdir(folderPath+date[y]+x)
 
 
 
