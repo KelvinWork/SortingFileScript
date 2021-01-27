@@ -2,14 +2,12 @@ import shutil
 import os
 import re
 
-folder_name = "Sorted_Mosquito/"
-main_folder_location = "/CodingProjects/SortingFileScript/" + folder_name
-image_location = "/CodingProjects/SortingFileScript/EW41/TestRun"
+
+folder_name = "Sorted_Mosquito/" # title of the main folder
+main_folder_location = "/Users/kelvi/PycharmProjects/SortingFileScript/" + folder_name # location that the file will be created
+image_location = "/Users/kelvi/PycharmProjects/SortingFileScript//EW41/TestRun" # location of the images
 
 list_location = os.listdir(image_location)
-print(list_location)
-print(type(list_location))
-
 
 def creating_folder():
     if(os.path.exists(main_folder_location)):
@@ -21,7 +19,7 @@ def creating_folder():
 
 
 def mosquito_category_folder():
-    mosquito_class = ["Male_Aeg", "Female_Aeg", "Male_Aesp", "Female_Aesp", "Male_Alb", "Female_Alb"]
+    mosquito_class = ["m_aeg", "f_aeg", "m_aesp", "f_aesp", "m_alb", "f_alb", "m_aemal", "f_aemal", "f_others", "m_others", "unidentifiable"]
 
     for mosquito in mosquito_class:
         if(os.path.exists(main_folder_location + "/" + mosquito)):
@@ -33,34 +31,70 @@ def mosquito_category_folder():
             os.mkdir(main_folder_location + mosquito)
 
 
+def check_items_folder(folder_name):
+    if os.listdir(folder_name) != []:
+        print("THERE IS ITEM IN THE UNIDENTIFIABLE FOLDER")
+        print("PLEASE SORT THE IMAGES")
+
+    else:
+        print("THERE IS NO ITEM IN THE UNIDENTIFIABLE FOLDER")
+
+
 def mosquito_sort_algorithm(list_location):
     for images in list_location:
 
         if re.search(r"f.aeg\w+", images, re.I):
             print("its a match")
-            shutil.move(image_location + "/" + images, main_folder_location + "Female_Aeg")
+            shutil.move(image_location + "/" + images, main_folder_location + "f_Aeg")
 
         elif re.search(r"m.aeg\w+", images, re.I):
             print("its a match")
-            shutil.move(image_location + "/" + images, main_folder_location + "Male_Aeg")
+            shutil.move(image_location + "/" + images, main_folder_location + "m_Aeg")
 
         elif re.search(r"f.alb\w+", images, re.I):
             print("its a match")
-            shutil.move(image_location + "/" + images, main_folder_location + "Female_Alb")
+            shutil.move(image_location + "/" + images, main_folder_location + "f_Alb")
 
         elif re.search(r"m.alb\w+", images, re.I):
             print("its a match")
-            shutil.move(image_location + "/" + images, main_folder_location + "Male_Alb")
+            shutil.move(image_location + "/" + images, main_folder_location + "m_Alb")
 
         elif re.search(r"f.aesp\w+", images, re.I):
             print("its a match")
-            shutil.move(image_location + "/" + images, main_folder_location + "Female_Aesp")
+            shutil.move(image_location + "/" + images, main_folder_location + "f_Aesp")
 
-        elif re.search(r"m.aesp\w+", images, re.I):
+        elif re.search(r"m.aemal\w+", images, re.I):
             print("its a match")
-            shutil.move(image_location + "/" + images, main_folder_location + "Male_Aesp")
+            shutil.move(image_location + "/" + images, main_folder_location + "m_aemal")
+
+        elif re.search(r"f.aemal\w+", images, re.I):
+            print("its a match")
+            shutil.move(image_location + "/" + images, main_folder_location + "f_aemal")
+
+        elif re.search(r"m.others\w+", images, re.I):
+            print("its a match")
+            shutil.move(image_location + "/" + images, main_folder_location + "m_others")
+
+        elif re.search(r"f.others\w+", images, re.I):
+            print("its a match")
+            shutil.move(image_location + "/" + images, main_folder_location + "f_others")
 
         else:
-            print("The folder has no images")
+
+            if re.search(r"m.\w+", images, re.I):
+                print("its a match")
+                shutil.move(image_location + "/" + images, main_folder_location + "m_others")
+
+            elif re.search(r"f.\w+", images, re.I):
+                print("its a match")
+                shutil.move(image_location + "/" + images, main_folder_location + "f_others")
+
+            else:
+                shutil.move(image_location + "/" + images, main_folder_location + "unidentifiable")
+                check_items_folder()
+
+    check_items_folder(main_folder_location + "unidentifiable")
+
+
 
 mosquito_sort_algorithm(list_location)
