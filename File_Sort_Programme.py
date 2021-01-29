@@ -34,12 +34,12 @@ def mosquito_category_folder(main_folder_location):
 
 def check_items_folder(folder_name):
     if os.listdir(folder_name) != []:
-        print("THERE IS ITEM IN THE UNIDENTIFIABLE FOLDER")
-        print("PLEASE SORT THE IMAGES")
+        item_in_folder = "THERE IS ITEM IN THE UNIDENTIFIABLE FOLDER \n PLEASE SORT THE IMAGES"
+        return item_in_folder
 
     else:
-        print("THERE IS NO ITEM IN THE UNIDENTIFIABLE FOLDER")
-
+        item_in_folder ="THERE IS NO ITEM IN THE UNIDENTIFIABLE FOLDER"
+        return item_in_folder
 
 def mosquito_sort_algorithm(image_location, main_folder_location):
     list_location = os.listdir(image_location)
