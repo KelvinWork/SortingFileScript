@@ -43,64 +43,73 @@ def check_items_folder(folder_name):
 
 def mosquito_sort_algorithm(image_location, main_folder_location):
     list_location = os.listdir(image_location)
-    for images in list_location:
 
-        if re.search(r"AEGf\w+", images, re.I):
-            print("Moving images. . . .")
-            shutil.copy(image_location + "/" + images, main_folder_location + "f_Aeg")
+    for file in list_location:
+        list_location_source = os.listdir(image_location + file + "/")
+        mosquito_category_folder(main_folder_location + file + "/")
+        for images in list_location_source:
 
-        elif re.search(r"AEGm\w+", images, re.I):
-            print("Moving images. . . .")
-            shutil.copy(image_location + "/" + images, main_folder_location + "m_Aeg")
-
-        elif re.search(r"ALBf\w+", images, re.I):
-            print("Moving images. . . .")
-            shutil.copy(image_location + "/" + images, main_folder_location + "f_Alb")
-
-        elif re.search(r"ALBm\w+", images, re.I):
-            print("Moving images. . . .")
-            shutil.copy(image_location + "/" + images, main_folder_location + "m_Alb")
-
-        elif re.search(r"AESPf\w+", images, re.I):
-            print("Moving images. . . .")
-            shutil.copy(image_location + "/" + images, main_folder_location + "f_Aesp")
-
-        elif re.search(r"AESPm\w+", images, re.I):
-            print("Moving images. . . .")
-            shutil.copy(image_location + "/" + images, main_folder_location + "m_Aesp")
-
-        elif re.search(r"AEMALm\w+", images, re.I):
-            print("Moving images. . . .")
-            shutil.copy(image_location + "/" + images, main_folder_location + "m_aemal")
-
-        elif re.search(r"AEMALf\w+", images, re.I):
-            print("Moving images. . . .")
-            shutil.copy(image_location + "/" + images, main_folder_location + "f_aemal")
-
-        elif re.search(r"m.others\w+", images, re.I):
-            print("Moving images. . . .")
-            shutil.copy(image_location + "/" + images, main_folder_location + "m_others")
-
-        elif re.search(r"f.others\w+", images, re.I):
-            print("Moving images. . . .")
-            shutil.copy(image_location + "/" + images, main_folder_location + "f_others")
-
-        else:
-
-            if re.search(r"m.\w+", images, re.I):
+            if re.search(r"AEGf\w+", images, re.I):
                 print("Moving images. . . .")
-                shutil.copy(image_location + "/" + images, main_folder_location + "m_others")
+                shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "f_Aeg")
 
-            elif re.search(r"f.\w+", images, re.I):
+            elif re.search(r"AEGm\w+", images, re.I):
                 print("Moving images. . . .")
-                shutil.copy(image_location + "/" + images, main_folder_location + "f_others")
+                shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "m_Aeg")
+
+            elif re.search(r"ALBf\w+", images, re.I):
+                print("Moving images. . . .")
+                shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "f_Alb")
+
+            elif re.search(r"ALBm\w+", images, re.I):
+                print("Moving images. . . .")
+                shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "m_Alb")
+
+            elif re.search(r"AESPf\w+", images, re.I):
+                print("Moving images. . . .")
+                shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "f_Aesp")
+
+            elif re.search(r"AESPm\w+", images, re.I):
+                print("Moving images. . . .")
+                shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "m_Aesp")
+
+            elif re.search(r"AEMALm\w+", images, re.I):
+                print("Moving images. . . .")
+                shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "m_aemal")
+
+            elif re.search(r"AEMALf\w+", images, re.I):
+                print("Moving images. . . .")
+                shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "f_aemal")
+
+            elif re.search(r"m.others\w+", images, re.I):
+                print("Moving images. . . .")
+                shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "m_others")
+
+            elif re.search(r"f.others\w+", images, re.I):
+                print("Moving images. . . .")
+                shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "f_others")
 
             else:
-                shutil.copy(image_location + "/" + images, main_folder_location + "unidentifiable")
+
+                if re.search(r"m.\w+", images, re.I):
+                    print("Moving images. . . .")
+                    shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "m_others")
+
+                elif re.search(r"f.\w+", images, re.I):
+                    print("Moving images. . . .")
+                    shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "f_others")
+
+                else:
+                    shutil.copy(image_location + file + "/" + images, main_folder_location + file + "/" + "unidentifiable")
 
 
-    check_items_folder(main_folder_location + "unidentifiable")
+    check_items_folder(main_folder_location + file + "/" "unidentifiable")
 
+#input type below
+src = "/Users/kelvi/Desktop/main/"
+dest = "/Users/kelvi/Desktop/main/"
 
-
+print(os.listdir(dest))
+#mosquito_category_folder(dest)
+mosquito_sort_algorithm(src, dest)
 
