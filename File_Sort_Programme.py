@@ -109,7 +109,7 @@ def mosquito_sort_algorithm(image_location, main_folder_location):
 src = "/Users/kelvi/Desktop/main/"
 dest = "/Users/kelvi/Desktop/main/"
 
-print(os.listdir(dest))
+
 #mosquito_category_folder(dest)
-mosquito_sort_algorithm(src, dest)
+#mosquito_sort_algorithm(src, dest)
 
