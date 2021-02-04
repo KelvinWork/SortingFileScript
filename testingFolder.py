@@ -1,6 +1,3 @@
-import shutil
-import os
-import re
 from File_Sort_Programme import *
 
 
@@ -23,4 +20,3 @@ for file in files:
             pass
 
 
-# if re.search(r"item1\w+", item, re.I):

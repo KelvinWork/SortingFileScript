@@ -2,14 +2,6 @@ import shutil
 import os
 import re
 
-
-
-# folder_name = "Sorted_Mosquito/" # title of the main folder
-# main_folder_location = "/Users/kelvi/PycharmProjects/SortingFileScript/" + folder_name # location that the file will be created
-# image_location = "/Users/kelvi/PycharmProjects/SortingFileScript/EW41/TestRun" # location of the images
-#
-#list_location = os.listdir(image_location)
-
 def creating_folder(main_folder_location):
     if(os.path.exists(main_folder_location)):
         print("Exisitng File has been created")
@@ -41,6 +33,7 @@ def check_items_folder(folder_name):
         item_in_folder ="THERE IS NO ITEM IN THE UNIDENTIFIABLE FOLDER"
         return item_in_folder
 
+
 def copy_main_folder(src, dest):
     if(os.path.exists(dest) == False):
         print("Duplicating the folder")
@@ -48,7 +41,6 @@ def copy_main_folder(src, dest):
         print("File Successfully Duplicated")
     else:
         print("Duplicated Folder has been found ! \n No Folder will be duplicated")
-
 
 
 def mosquito_sort_algorithm(image_location, main_folder_location): # both params of this function is the same. I am too lazy to refactor it
@@ -115,7 +107,9 @@ def mosquito_sort_algorithm(image_location, main_folder_location): # both params
 
     check_items_folder(main_folder_location + file + "/" "unidentifiable")
 
-#input type below
+
+# input type below
+
 src = "/Users/kelvi/Desktop/main/"
 dest = "/Users/kelvi/Desktop/sort/"
 
