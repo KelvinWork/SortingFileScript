@@ -1,10 +1,17 @@
+## NOTICE ##
+#Please Scroll To The Last Line Of The Program To Change The Path of the Folder
+#Do Not Need To Alter The Prgoram
+#Do Not Need To  Alter The Program
+
+
+
 import shutil
 import os
 import re
 
 def creating_folder(main_folder_location):
     if(os.path.exists(main_folder_location)):
-        print("Exisitng File has been created")
+        print("Existing File has been created")
 
     else:
         print("Main folder has been created !")
